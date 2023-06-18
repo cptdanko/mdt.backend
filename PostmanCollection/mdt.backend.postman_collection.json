@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "9c628e02-2e96-45c5-b666-42a38c479e0f",
+		"name": "mdt.backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "595931"
+	},
+	"item": [
+		{
+			"name": "Todo",
+			"item": [
+				{
+					"name": "add todo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"Create todo on Java backend 3 \",\n    \"done\": \"false\",\n    \"date\": \"2023-01-25T12:00:00Z\",\n    \"userId\": \"USR_1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/todo/add",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"todo",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "greeting",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/api/greet",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"greet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/ping",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get todo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/api/todo/TD_1687681246085",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"todo",
+								"TD_1687681246085"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update todo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"Todo updated again\",\n    \"done\": \"false\",\n    \"date\": \"2023-01-25T12:00:00Z\",\n    \"userId\": \"USR_1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/todo/TD_1687681241248",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"todo",
+								"TD_1687681241248"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "todo by user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/api/todo/by/USR_1234",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"todo",
+								"by",
+								"USR_1234"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete todo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/api/todo/TD_1687680204786",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"todo",
+								"TD_1687680204786"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
