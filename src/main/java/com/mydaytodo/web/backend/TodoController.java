@@ -2,13 +2,11 @@ package com.mydaytodo.web.backend;
 
 import com.mydaytodo.web.backend.models.Todo;
 import com.mydaytodo.web.backend.service.TodoServiceImpl;
-import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("/api/todo")

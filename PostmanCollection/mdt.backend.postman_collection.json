@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9c628e02-2e96-45c5-b666-42a38c479e0f",
+		"_postman_id": "e241c09b-3907-427f-b233-fd2617de74f1",
 		"name": "mdt.backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "595931"
@@ -153,6 +153,105 @@
 								"api",
 								"todo",
 								"TD_1687680204786"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/api/user/USR_1688817094056",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"USR_1688817094056"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"qinZhang\",\n    \"email\": \"zhang.yakang1@gmail.com\",\n    \"name\": \"Qin Shi Huang\",\n    \"preferredCurrencyCode\": \"AUD\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/user/",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"qinZhang\",\n    \"email\": \"zhang.yakang1@gmail.com\",\n    \"name\": \"Qin Shi Zhang\",\n    \"preferredCurrencyCode\": \"AUD\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{hostname}}/api/user/USR_1688817094056",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"USR_1688817094056"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete todo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/api/user/USR_1688218710494",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"user",
+								"USR_1688218710494"
 							]
 						}
 					},

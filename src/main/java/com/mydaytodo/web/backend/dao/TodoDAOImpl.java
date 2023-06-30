@@ -23,9 +23,6 @@ public class TodoDAOImpl implements TodoDAO {
 
     @Override
     public boolean deleteTodo(String todoId) {
-        System.out.println(this.todos.size());
-        System.out.println(this.todos.get(0).toString());
-        System.out.println(this.todos.get(0).getId());
         return todos.removeIf(todo -> (todo.getId().equals(todoId)));
     }
 
