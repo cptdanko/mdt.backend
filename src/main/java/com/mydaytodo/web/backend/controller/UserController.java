@@ -1,6 +1,5 @@
-package com.mydaytodo.web.backend;
+package com.mydaytodo.web.backend.controller;
 
-import com.mydaytodo.web.backend.models.Todo;
 import com.mydaytodo.web.backend.models.User;
 import com.mydaytodo.web.backend.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

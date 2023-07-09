@@ -1,4 +1,4 @@
-package com.mydaytodo.web.backend;
+package com.mydaytodo.web.backend.controller;
 
 import org.springframework.http.ResponseEntity;
 
