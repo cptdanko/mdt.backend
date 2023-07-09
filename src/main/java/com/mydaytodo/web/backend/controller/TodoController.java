@@ -1,4 +1,4 @@
-package com.mydaytodo.web.backend;
+package com.mydaytodo.web.backend.controller;
 
 import com.mydaytodo.web.backend.models.Todo;
 import com.mydaytodo.web.backend.service.TodoServiceImpl;
