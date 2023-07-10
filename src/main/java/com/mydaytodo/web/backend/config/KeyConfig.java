@@ -21,4 +21,5 @@ public class KeyConfig {
     private String exchangerateUrl;
     private String newsUrl;
     private String newsKey;
+    private String jokesUrl;
 }
