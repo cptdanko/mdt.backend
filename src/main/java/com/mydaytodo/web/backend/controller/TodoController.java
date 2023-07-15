@@ -25,7 +25,7 @@ public class TodoController implements DefaultCrudController<Todo> {
      */
     @Override
     @PostMapping("/add")
-    public ResponseEntity add(@RequestBody Todo obj) {
+    public ResponseEntity<HttpStatus> add(@RequestBody Todo obj) {
         ResponseEntity result;
         // validation logic here
         Todo todo = todoService.addTodo(obj);
