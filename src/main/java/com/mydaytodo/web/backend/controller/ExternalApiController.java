@@ -1,19 +1,18 @@
 package com.mydaytodo.web.backend.controller;
 
 import com.mydaytodo.web.backend.models.ChuckNorrisJoke;
+import com.mydaytodo.web.backend.models.ExchangeRateResponse;
 import com.mydaytodo.web.backend.models.WeatherResponse;
+import com.mydaytodo.web.backend.restclient.ExchangeRateClient;
 import com.mydaytodo.web.backend.restclient.JokesClient;
 import com.mydaytodo.web.backend.restclient.WeatherClient;
-import lombok.extern.java.Log;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.math.BigDecimal;
 import java.util.logging.Logger;
 
 @RequestMapping("/proxy/api")
@@ -24,6 +23,8 @@ public class ExternalApiController {
     private JokesClient jokesClient;
     @Autowired
     private WeatherClient weatherClient;
+    @Autowired
+    public ExchangeRateClient exchangeRateClient;
 
     /**
      * @return
@@ -58,5 +59,22 @@ public class ExternalApiController {
             city = "sydney";
         }
         return new ResponseEntity<>(weatherClient.getWeather(city, units), HttpStatus.OK);
+    }
+
+    /**
+     *
+     * @return
+     */
+    @GetMapping("/exchangeRate")
+    public ResponseEntity<ExchangeRateResponse> getExchangeRates(@RequestParam(value = "currencyCode", required = false) String currencyCode) {
+        // validate the currency code
+        ExchangeRateResponse response = exchangeRateClient.exchangeRateData(currencyCode);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+    @GetMapping("/exchangeRate/convert/{amount}/from/{fromCode}/to/{toCode}")
+    public ResponseEntity<BigDecimal> convert(@PathVariable("amount") BigDecimal amount, @PathVariable("fromCode") String fromCode, @PathVariable("toCode") String toCode ) {
+        // add validation logic
+        BigDecimal convertedAmt = exchangeRateClient.convert(amount, fromCode, toCode);
+        return new ResponseEntity<>(convertedAmt, HttpStatus.OK);
     }
 }
