@@ -2,14 +2,12 @@ package com.mydaytodo.web.backend.restclient;
 
 import com.mydaytodo.web.backend.config.KeyConfig;
 import com.mydaytodo.web.backend.models.ChuckNorrisJoke;
-import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.*;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.logging.Logger;
 
 @Component
@@ -18,8 +16,9 @@ public class JokesClient {
     @Autowired
     private KeyConfig config;
     private final Set<String> jokeCategories = new HashSet<>();
-
+    Random random = new Random();
     public JokesClient() {
+        // TODO document why this constructor is empty
     }
 
     /**
@@ -42,8 +41,7 @@ public class JokesClient {
         RestTemplate template = new RestTemplate();
         loadCategories();
         if(category == null) {
-            Random r = new Random();
-            int index = r.nextInt(this.jokeCategories.size());
+            int index = random.nextInt(this.jokeCategories.size());
             category = jokeCategories.stream().toList().get(index);
         } else {
             // do some validation here to check for category

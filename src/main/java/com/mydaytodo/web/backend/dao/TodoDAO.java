@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TodoDAO {
     List<Todo> getTodoByUser(String userId);
-    boolean deleteTodo(String todoId);
+    Integer deleteTodo(String todoId);
     boolean updateTodo(String todoId, Todo todo);
     Todo getTodo(String todoId);
     Todo addTodo(Todo todo);

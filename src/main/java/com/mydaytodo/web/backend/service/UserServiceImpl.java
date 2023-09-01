@@ -16,8 +16,8 @@ public class UserServiceImpl {
     public User getUser(String userId) {
         return userDAO.get(userId);
     }
-    public boolean delete(String userId) {
-        return this.userDAO.delete(userId);
+    public Integer delete(String userId) {
+        return userDAO.delete(userId);
     }
     public User addUser(User user) {
         String userId = Constants.userId + System.currentTimeMillis();
@@ -26,7 +26,7 @@ public class UserServiceImpl {
         user.setActive(true);
         return userDAO.save(user);
     }
-    public User update(String id, User user) {
+    public Integer update(String id, User user) {
         return userDAO.update(id, user);
     }
 }
