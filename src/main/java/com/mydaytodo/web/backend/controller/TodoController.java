@@ -72,14 +72,9 @@ public class TodoController implements DefaultCrudController<Todo> {
     @DeleteMapping("/{id}")
     @Override
     public ResponseEntity<HttpStatus> delete(@PathVariable("id") String id) {
-        ResponseEntity<HttpStatus> result;
         //put some validation logic here
-        if (todoService.deleteTodo(id)) {
-            result = new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            result = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        return result;
+        int delResult = todoService.deleteTodo(id);
+        return new ResponseEntity<>(HttpStatus.valueOf(delResult));
     }
 
     /**

@@ -5,8 +5,6 @@ import com.mydaytodo.web.backend.models.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Component
@@ -19,7 +17,7 @@ public class TodoServiceImpl {
     }
 
 
-    public boolean deleteTodo(String todoId) {
+    public Integer deleteTodo(String todoId) {
         return todoDAO.deleteTodo(todoId);
     }
 

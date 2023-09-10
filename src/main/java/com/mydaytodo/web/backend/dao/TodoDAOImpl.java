@@ -1,59 +1,50 @@
 package com.mydaytodo.web.backend.dao;
 
+import com.mydaytodo.web.backend.config.DynamoDBConfig;
 import com.mydaytodo.web.backend.models.Todo;
+import com.mydaytodo.web.backend.repository.TodoRepository;
+import org.apache.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
+import java.util.logging.Logger;
+
 @Component
 public class TodoDAOImpl implements TodoDAO {
-
+    private Logger logger = Logger.getLogger(TodoDAOImpl.class.toString());
     private List<Todo> todos = new ArrayList<>();
+    @Autowired
+    private TodoRepository todoRepository;
+
+    @Autowired
+    private DynamoDBConfig dynamoDBConfig;
     @Override
     public List<Todo> getTodoByUser(String userId) {
-        List<Todo> userTodos = todos.stream().filter(todo -> {
-            return todo.getUserId().equals(userId);
-        }).collect(Collectors.toList());
-        return userTodos;
+        return todoRepository.getTodoByUser(userId);
+        // return todos.stream().filter(todo -> todo.getUserId().equals(userId)).toList();
     }
 
     @Override
-    public boolean deleteTodo(String todoId) {
-        return todos.removeIf(todo -> (todo.getId().equals(todoId)));
+    public Integer deleteTodo(String todoId) {
+        return todoRepository.deleteTodo(todoId);
     }
 
     @Override
     public boolean updateTodo(String todoId, Todo todo) {
-        AtomicInteger count = new AtomicInteger(0);
-        List<Todo> filteredList = todos.stream().filter(t -> {
-            count.addAndGet(1);
-            return t.getId().equals(todoId);
-        }).collect(Collectors.toList());
-        if(count == null) {
-            return false;
-        }
-        todos.set((count.get() - 1), todo);
-        return true;
+        return todoRepository.updateTodo(todoId, todo) == HttpStatus.SC_NO_CONTENT;
     }
 
     @Override
     public Todo getTodo(String todoId) {
-        List<Todo> filteredList = todos.stream().filter(todo -> {
-            return todo.getId().equals(todoId);
-        }).collect(Collectors.toList());
-        //filteredList.size() > 0
-        return filteredList.stream().findFirst().orElseThrow();
+        return todoRepository.getTodo(todoId);
     }
 
     @Override
     public Todo addTodo(Todo todo) {
-        if(todos.add(todo)) {
-            return todo;
-        }
-        return null;
+        return todoRepository.saveTodo(todo);
     }
+
 }

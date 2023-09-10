@@ -1,7 +1,10 @@
 package com.mydaytodo.web.backend.dao;
 
+import com.mydaytodo.web.backend.config.DynamoDBConfig;
 import com.mydaytodo.web.backend.models.Todo;
 import com.mydaytodo.web.backend.models.User;
+import com.mydaytodo.web.backend.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -11,23 +14,20 @@ import java.util.stream.Collectors;
 @Component
 public class UserDAOImpl implements UserDAO {
     private Logger logger = Logger.getLogger(UserDAOImpl.class.toString());
+    @Autowired
+    private DynamoDBAdmin dynamoDBAdmin;
 
-    private List<User> users = new ArrayList<>();
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     public User get(String userId) {
-        logger.info("IN USER DAO IMPL "+ userId);
-        List<User> filteredList = users.stream().filter(user -> {
-            return user.getUserId().equals(userId);
-        }).collect(Collectors.toList());
-        return filteredList.stream().findFirst().orElseThrow();
+        return userRepository.getUser(userId);
     }
 
     @Override
     public User save(User user) {
-        if(users.add(user)) {
-            return user;
-        }
-        return null;
+        return userRepository.saveUser(user);
     }
 
     /**
@@ -37,22 +37,12 @@ public class UserDAOImpl implements UserDAO {
      * @return
      */
     @Override
-    public boolean delete(String userId) {
-        User user = users.stream().filter(u -> u.getUserId().equals(userId))
-                .findFirst().orElseThrow();
-        user.setActive(false);
-        return (update(userId, user) != null);
+    public Integer delete(String userId) {
+        return userRepository.deleteUser(userId);
     }
 
     @Override
-    public User update(String id, User user) {
-        User savedUser = users.stream().filter(user1 -> (user1.getUserId().equals(id)))
-                .findFirst().orElseThrow();
-        savedUser.setName(user.getName());
-        savedUser.setEmail(user.getEmail());
-        savedUser.setPreferredCurrencyCode(user.getPreferredCurrencyCode());
-        savedUser.setUsername(user.getUsername());
-        users.set(users.indexOf(savedUser), savedUser);
-        return user;
+    public Integer update(String id, User user) {
+        return userRepository.updateUser(id, user);
     }
 }

@@ -15,41 +15,28 @@ public class UserController implements DefaultCrudController<User> {
     @Override
     @PostMapping("/")
     public ResponseEntity<User> add(@RequestBody User obj) {
-        ResponseEntity result;
         // validation logic here
         User user = userService.addUser(obj);
         if (user != null) {
-            result = new ResponseEntity(user, HttpStatus.OK);
+            return new ResponseEntity<>(user, HttpStatus.OK);
         } else {
-            result = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return result;
     }
 
     @Override
     @PutMapping("/{id}")
-    public ResponseEntity<User> update(@PathVariable("id") String id, @RequestBody User obj) {
-        ResponseEntity<User> result;
+    public ResponseEntity<HttpStatus> update(@PathVariable("id") String id, @RequestBody User obj) {
         // validation logic here
-        User user = userService.update(id, obj);
-        if (user != null) {
-            result = new ResponseEntity<>(user, HttpStatus.NO_CONTENT);
-        } else {
-            result = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        return result;
+        Integer updateResponse = userService.update(id, obj);
+        return new ResponseEntity<>(HttpStatus.valueOf(updateResponse));
     }
     @DeleteMapping("/{id}")
     @Override
-    public ResponseEntity delete(@PathVariable("id") String id) {
-        ResponseEntity<HttpStatus> result;
+    public ResponseEntity<HttpStatus> delete(@PathVariable("id") String id) {
         //put some validation logic here
-        if (userService.delete(id)) {
-            result = new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            result = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-        return result;
+        Integer deleteResponse = userService.delete(id);
+        return new ResponseEntity<>(HttpStatus.valueOf(deleteResponse));
     }
     @GetMapping("/{id}")
     @Override
