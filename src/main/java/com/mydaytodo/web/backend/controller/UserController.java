@@ -18,7 +18,7 @@ public class UserController implements DefaultCrudController<User> {
         // validation logic here
         User user = userService.addUser(obj);
         if (user != null) {
-            return new ResponseEntity<>(user, HttpStatus.OK);
+            return new ResponseEntity<>(user, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

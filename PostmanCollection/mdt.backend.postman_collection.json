@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"text\": \"Create todo on Java backend 3 \",\n    \"done\": \"false\",\n    \"date\": \"2023-01-25T12:00:00Z\",\n    \"userId\": \"USR_1234\"\n}",
+							"raw": "{\n    \"text\": \"Save with DynamoDB mapper and todoRepository\",\n    \"done\": \"false\",\n    \"date\": \"2023-01-25T12:00:00Z\",\n    \"userId\": \"USR_1234_UQ\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -98,7 +98,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"text\": \"Todo updated again\",\n    \"done\": \"false\",\n    \"date\": \"2023-01-25T12:00:00Z\",\n    \"userId\": \"USR_1234\"\n}",
+							"raw": "{\n    \"text\": \"Updating the todo with DynamoDBMapper andrepository\",\n    \"done\": \"false\",\n    \"date\": \"2023-01-25T12:00:00Z\",\n    \"userId\": \"USR_1234\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -106,14 +106,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{hostname}}/api/todo/TD_1687681241248",
+							"raw": "{{hostname}}/api/todo/TD_1694236363559",
 							"host": [
 								"{{hostname}}"
 							],
 							"path": [
 								"api",
 								"todo",
-								"TD_1687681241248"
+								"TD_1694236363559"
 							]
 						}
 					},
@@ -125,7 +125,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{hostname}}/api/todo/by/USR_1234",
+							"raw": "{{hostname}}/api/todo/by/USR_1234_UQ",
 							"host": [
 								"{{hostname}}"
 							],
@@ -133,7 +133,7 @@
 								"api",
 								"todo",
 								"by",
-								"USR_1234"
+								"USR_1234_UQ"
 							]
 						}
 					},
@@ -145,14 +145,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{hostname}}/api/todo/TD_1687680204786",
+							"raw": "{{hostname}}/api/todo/TD_1694236363559",
 							"host": [
 								"{{hostname}}"
 							],
 							"path": [
 								"api",
 								"todo",
-								"TD_1687680204786"
+								"TD_1694236363559"
 							]
 						}
 					},
@@ -169,14 +169,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{hostname}}/api/user/USR_1688817094056",
+							"raw": "{{hostname}}/api/user/USR_1694311505587",
 							"host": [
 								"{{hostname}}"
 							],
 							"path": [
 								"api",
 								"user",
-								"USR_1688817094056"
+								"USR_1694311505587"
 							]
 						}
 					},
@@ -189,7 +189,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"qinZhang\",\n    \"email\": \"zhang.yakang1@gmail.com\",\n    \"name\": \"Qin Shi Huang\",\n    \"preferredCurrencyCode\": \"AUD\"\n}",
+							"raw": "{\n    \"username\": \"qinShiZhang\",\n    \"email\": \"zhang.yakang1@gmail.com\",\n    \"name\": \"Qin Shi Zhang\",\n    \"preferredCurrencyCode\": \"AUD\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -217,7 +217,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"qinZhang\",\n    \"email\": \"zhang.yakang1@gmail.com\",\n    \"name\": \"Qin Shi Zhang\",\n    \"preferredCurrencyCode\": \"AUD\"\n}",
+							"raw": "{\n    \"username\": \"testname2\",\n    \"email\": \"zhang.yakang1@gmail.com\",\n    \"name\": \"寝室生气\",\n    \"preferredCurrencyCode\": \"AUD\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -225,14 +225,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{hostname}}/api/user/USR_1688817094056",
+							"raw": "{{hostname}}/api/user/USR_1694311505587",
 							"host": [
 								"{{hostname}}"
 							],
 							"path": [
 								"api",
 								"user",
-								"USR_1688817094056"
+								"USR_1694311505587"
 							]
 						}
 					},
@@ -244,14 +244,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{hostname}}/api/user/USR_1688218710494",
+							"raw": "{{hostname}}/api/user/USR_1694311505587",
 							"host": [
 								"{{hostname}}"
 							],
 							"path": [
 								"api",
 								"user",
-								"USR_1688218710494"
+								"USR_1694311505587"
 							]
 						}
 					},

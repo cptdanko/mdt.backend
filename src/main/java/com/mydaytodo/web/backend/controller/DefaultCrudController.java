@@ -4,8 +4,8 @@ import org.springframework.http.ResponseEntity;
 
 public interface DefaultCrudController<T> {
 
-    public ResponseEntity add(T obj);
-    public ResponseEntity update(String id, T obj);
-    public ResponseEntity delete(String id);
-    public ResponseEntity<T> get(String id);
+    ResponseEntity add(T obj);
+    ResponseEntity update(String id, T obj);
+    ResponseEntity delete(String id);
+    ResponseEntity<T> get(String id);
 }

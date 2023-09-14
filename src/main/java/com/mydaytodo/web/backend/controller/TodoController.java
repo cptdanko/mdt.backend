@@ -30,7 +30,7 @@ public class TodoController implements DefaultCrudController<Todo> {
         // validation logic here
         Todo todo = todoService.addTodo(obj);
         if (todo != null) {
-            result = new ResponseEntity(todo, HttpStatus.OK);
+            result = new ResponseEntity<>(todo, HttpStatus.CREATED);
         } else {
             result = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
