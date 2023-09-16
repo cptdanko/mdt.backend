@@ -31,7 +31,6 @@ public class ExternalApiController {
      */
     @GetMapping("/jokes")
     public ResponseEntity<ChuckNorrisJoke> getJokes() {
-        ResponseEntity<String> response;
         return jokesClient.getJokes();
     }
 
