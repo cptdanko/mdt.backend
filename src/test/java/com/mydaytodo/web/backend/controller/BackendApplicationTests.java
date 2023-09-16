@@ -13,7 +13,7 @@ class BackendApplicationTests {
 	private HelloMDTController helloMDTController;
 
 	@Autowired
-	private ExternalApiControllerTest externalApiController;
+	private ExternalApiController externalApiController;
 	@Autowired
 	private TodoController todoController;
 	@Autowired
