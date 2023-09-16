@@ -43,7 +43,7 @@ public class ExternalApiController {
     @GetMapping("/jokes/by")
     public ResponseEntity<ChuckNorrisJoke> getJoke(@RequestParam(name="category", required = false) String category) throws InterruptedException {
         // if the category ids not present pick a random from the list
-        return this.jokesClient.getJokes(category);
+        return jokesClient.getJokes(category);
     }
 
     /**

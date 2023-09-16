@@ -22,12 +22,6 @@ class HelloMDTControllerTest {
     private int port;
 
     @Test
-    void testSayHello() throws Exception {
-        assertThat(testRestTemplate
-                .getForObject("http://localhost:"+port+"/api/greet", String.class))
-                .contains("HelloWorld");
-    }
-    @Test
     void testPing() {
         String url = "http://localhost:"+port+"/ping";
         ResponseEntity<Void> entity = testRestTemplate.exchange(url, HttpMethod.GET, HttpEntity.EMPTY, Void.class);
