@@ -37,8 +37,8 @@ public class DynamoDBConfig {
 
         //return dynamoDB;
     }
-    @Bean
+    /*@Bean
     public AWSCredentials amazonAwsCredentials() {
         return new BasicAWSCredentials(key, secret);
-    }
+    }*/
 }
