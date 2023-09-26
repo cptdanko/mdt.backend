@@ -24,6 +24,10 @@ public class UserController implements DefaultCrudController<User> {
         }
     }
 
+    @PostMapping("/register")
+    public ResponseEntity<User> registerUser(@RequestBody User user) {
+        return new ResponseEntity<>(userService.registerUser(user), HttpStatus.CREATED);
+    }
     @Override
     @PutMapping("/{id}")
     public ResponseEntity<HttpStatus> update(@PathVariable("id") String id, @RequestBody User obj) {
