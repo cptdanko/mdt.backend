@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+spring:
+  security:
+    token:
+      header:
+      secret:
+      expiration:
+    user:
+      name:
+      password:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id:
+            client-secret:
+
+keys:
+  weatherUrl:
+  weatherKey:
+  exchangerateUrl:
+  exchangerateKey:
+  newsUrl:
+  newsKey:
+  jokesUrl:
+  yelpUrl:
+  yelpToken:
+
+tokens:
+  yelp:
+
+dynamo-db:
+  amazonDBEndpoint:
+  key:
+  secret:
+
+
+defaults:
+  currencyCode: aud
+

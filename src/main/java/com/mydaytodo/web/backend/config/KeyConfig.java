@@ -22,4 +22,6 @@ public class KeyConfig {
     private String newsUrl;
     private String newsKey;
     private String jokesUrl;
+    private String yelpUrl;
+    private String yelpToken;
 }
