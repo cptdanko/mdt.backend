@@ -2,6 +2,7 @@ package com.mydaytodo.web.backend.controller;
 
 import com.mydaytodo.web.backend.models.Todo;
 import com.mydaytodo.web.backend.service.TodoServiceImpl;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -117,5 +118,11 @@ public class TodoController implements DefaultCrudController<Todo> {
             result = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return result;
+    }
+
+    @GetMapping("/search/{userId}")
+    public ResponseEntity<List<Todo>> searchTodo(@PathVariable("userId") String userId, @RequestParam("searchText") String searchText) {
+        // do some validation, whatever it maybe
+        return new ResponseEntity<>(todoService.searchTodo(userId, searchText), HttpStatus.OK);
     }
 }

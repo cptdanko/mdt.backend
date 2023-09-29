@@ -14,8 +14,6 @@ import java.util.logging.Logger;
 
 @Component
 public class TodoDAOImpl implements TodoDAO {
-    private Logger logger = Logger.getLogger(TodoDAOImpl.class.toString());
-    private List<Todo> todos = new ArrayList<>();
     @Autowired
     private TodoRepository todoRepository;
 
@@ -25,6 +23,14 @@ public class TodoDAOImpl implements TodoDAO {
     public List<Todo> getTodoByUser(String userId) {
         return todoRepository.getTodoByUser(userId);
         // return todos.stream().filter(todo -> todo.getUserId().equals(userId)).toList();
+    }
+
+    @Override
+    public List<Todo> searchTodo(String userId, String searchTerm) {
+        return getTodoByUser(userId)
+                .stream()
+                .filter(todo -> todo.getText().toLowerCase().contains(searchTerm.toLowerCase()))
+                .toList();
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.mydaytodo.web.backend.models.ExchangeRateResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
 
 import java.math.BigDecimal;
 import java.util.logging.Logger;
@@ -36,7 +37,6 @@ public class ExchangeRateClient {
                 .retrieve()
                 .bodyToMono(ExchangeRateResponse.class)
                 .block();
-
     }
     public BigDecimal convert(BigDecimal amount, String fromCode, String toCode) {
         ExchangeRateResponse response = exchangeRateData(fromCode);
@@ -48,5 +48,18 @@ public class ExchangeRateClient {
             conversionRate = response.getConversionRates().get(toCode.toUpperCase());
         }
         return amount.multiply(conversionRate);
+    }
+
+    public Mono<ExchangeRateResponse> exchangeRatePromise(String currencyCode) {
+        if(currencyCode == null) {
+            currencyCode = defaultConfig.getCurrencyCode();
+        }
+        String url = config.getExchangerateUrl() +
+                "/"+ config.getExchangerateKey()
+                + "/latest/" + currencyCode;
+        return webClient.get()
+                .uri(url)
+                .retrieve()
+                .bodyToMono(ExchangeRateResponse.class);
     }
 }
