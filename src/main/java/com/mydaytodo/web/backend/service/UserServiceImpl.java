@@ -23,7 +23,7 @@ public class UserServiceImpl {
         return userDAO.delete(userId);
     }
     public User addUser(User user) {
-        String userId = Constants.userId + System.currentTimeMillis();
+        String userId = Constants.USER_ID + System.currentTimeMillis();
         user.setUserId(userId);
         user.setDateJoined(new Date());
         user.setActive(true);

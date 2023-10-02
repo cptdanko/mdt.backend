@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e241c09b-3907-427f-b233-fd2617de74f1",
+		"_postman_id": "faf29945-e042-485a-b2f7-6b8e143ea20e",
 		"name": "mdt.backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "595931"
@@ -12,6 +12,21 @@
 				{
 					"name": "add todo",
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -38,54 +53,75 @@
 					"response": []
 				},
 				{
-					"name": "greeting",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{hostname}}/api/greet",
-							"host": [
-								"{{hostname}}"
-							],
-							"path": [
-								"api",
-								"greet"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "ping",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{hostname}}/ping",
-							"host": [
-								"{{hostname}}"
-							],
-							"path": [
-								"ping"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "get todo",
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{hostname}}/api/todo/TD_1687681246085",
+							"raw": "{{hostname}}/api/todo/TD_1695719637058",
 							"host": [
 								"{{hostname}}"
 							],
 							"path": [
 								"api",
 								"todo",
-								"TD_1687681246085"
+								"TD_1695719637058"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search todo",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/api/todo/search/USR_1234_UQ?searchText=repository",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"todo",
+								"search",
+								"USR_1234_UQ"
+							],
+							"query": [
+								{
+									"key": "searchText",
+									"value": "repository"
+								}
 							]
 						}
 					},
@@ -122,6 +158,21 @@
 				{
 					"name": "todo by user",
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -166,6 +217,21 @@
 				{
 					"name": "Get user",
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -185,6 +251,21 @@
 				{
 					"name": "Create user",
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -213,6 +294,21 @@
 				{
 					"name": "Update user",
 					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -258,6 +354,120 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "ExternAPIcalls",
+			"item": [
+				{
+					"name": "Search Restaurants",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{username}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{hostname}}/api/search/food?cuisine=french&location=paris",
+							"host": [
+								"{{hostname}}"
+							],
+							"path": [
+								"api",
+								"search",
+								"food"
+							],
+							"query": [
+								{
+									"key": "cuisine",
+									"value": "french"
+								},
+								{
+									"key": "location",
+									"value": "paris"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ping",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/ping",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "greeting",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{hostname}}/api/greet",
+					"host": [
+						"{{hostname}}"
+					],
+					"path": [
+						"api",
+						"greet"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

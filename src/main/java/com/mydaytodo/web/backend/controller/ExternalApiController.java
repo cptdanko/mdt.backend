@@ -57,7 +57,8 @@ public class ExternalApiController {
         if(city == null) {
             city = "sydney";
         }
-        return new ResponseEntity<>(weatherClient.getWeather(city, units), HttpStatus.OK);
+        WeatherResponse weather = weatherClient.getWeather(city, units).block();
+        return new ResponseEntity<>(weather, HttpStatus.OK);
     }
 
     /**
